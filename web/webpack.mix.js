@@ -9,6 +9,7 @@ mix
 .babel('../resources/static/js/app.js', '../resources/static/js/app-e5.js')
 
 mix.copy('src/index.html', '../resources/static/index.html');
+mix.copy('src/manifest.json', '../resources/static/manifest.json');
 
 mix.disableNotifications();
 
