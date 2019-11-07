@@ -1,0 +1,16 @@
+/.gradle
+/.idea
+/out
+/build
+*.iml
+*.ipr
+*.iws
+
+/web/node_modules
+/dist
+/resources/static
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
