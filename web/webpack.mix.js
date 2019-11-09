@@ -10,6 +10,7 @@ mix
 
 mix.copy('src/index.html', '../web-dist/index.html');
 mix.copy('src/manifest.json', '../web-dist/manifest.json');
+mix.copyDirectory('src/images', '../web-dist/images');
 
 mix.disableNotifications();
 

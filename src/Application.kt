@@ -15,6 +15,8 @@ fun Application.module(testing: Boolean = false) {
         static("") {
             staticRootFolder = File("web-dist")
             files("js")
+            files("images")
+            files(".")
             default("index.html")
         }
     }
