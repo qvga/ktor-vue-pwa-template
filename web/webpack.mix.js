@@ -4,12 +4,12 @@ const { InjectManifest } = require('workbox-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 mix
-.setPublicPath('../resources/static/')
-.js('src/app.js', '../resources/static/js/app.js')
-.babel('../resources/static/js/app.js', '../resources/static/js/app-e5.js')
+.setPublicPath('../web-dist/')
+.js('src/app.js', '../web-dist/js/app.js')
+.babel('../web-dist/js/app.js', '../web-dist/js/app-e5.js')
 
-mix.copy('src/index.html', '../resources/static/index.html');
-mix.copy('src/manifest.json', '../resources/static/manifest.json');
+mix.copy('src/index.html', '../web-dist/index.html');
+mix.copy('src/manifest.json', '../web-dist/manifest.json');
 
 mix.disableNotifications();
 
@@ -19,7 +19,11 @@ mix.webpackConfig({
         publicPath: '' // https://github.com/GoogleChrome/workbox/issues/1534
     },
     plugins: [
-        new CleanWebpackPlugin(),
+        new CleanWebpackPlugin({
+            verbose: true,
+            cleanOnceBeforeBuildPatterns: [],
+            cleanAfterEveryBuildPatterns: ['precache-manifest*'],
+        }),
         new InjectManifest({
             swSrc: 'src/service-worker.js',
             swDest: 'service-worker.js',

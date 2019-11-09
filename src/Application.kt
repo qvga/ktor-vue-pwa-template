@@ -1,10 +1,9 @@
 package com.example
 
 import io.ktor.application.Application
-import io.ktor.http.content.default
-import io.ktor.http.content.resources
-import io.ktor.http.content.static
+import io.ktor.http.content.*
 import io.ktor.routing.routing
+import java.io.File
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
@@ -13,8 +12,9 @@ fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 fun Application.module(testing: Boolean = false) {
 
     routing {
-        static("/") {
-            resources("static")
+        static("") {
+            staticRootFolder = File("web-dist")
+            files("js")
             default("index.html")
         }
     }
